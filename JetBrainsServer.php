@@ -9,11 +9,9 @@
 class JetBrainsServer {
 
     private $private_key;
-    private $public_key;
 
     public function __construct() {
-        $this->private_key = file_get_contents(BASE_PATH . '/rsa_private_key.pem');
-        $this->public_key = file_get_contents(BASE_PATH . '/rsa_public_key.pem');
+        $this->private_key = file_get_contents(BASE_PATH . '/rsa_private_key_pkcs8.pem');
     }
 
     public function ping($salt) {
@@ -51,7 +49,7 @@ class JetBrainsServer {
     }
 
     private function rsa_encrypt($str) {
-        $pkeyId = openssl_get_privatekey($this->private_key);
+        $pkeyId = openssl_pkey_get_private($this->private_key);
         if (empty ($pkeyId)) {
             return '';
         }
