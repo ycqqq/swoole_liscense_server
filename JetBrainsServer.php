@@ -11,7 +11,7 @@ class JetBrainsServer {
     private $private_key;
 
     public function __construct() {
-        $this->private_key = file_get_contents(BASE_PATH . '/rsa_private_key_pkcs8.pem');
+        $this->private_key = file_get_contents(BASE_PATH . '/rsa_private_key.pem');
     }
 
     public function ping($salt) {
