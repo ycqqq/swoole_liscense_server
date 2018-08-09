@@ -12,7 +12,6 @@ $server = new swoole_http_server("127.0.0.1", 9502);
 $server->set(
     [
         'worker_num'    => 1,
-        'dispatch_mode' => 1, //轮询
     ]
 );
 
